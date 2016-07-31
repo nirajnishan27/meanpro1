@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h1>Coustmers</h1>
+  </div>
+  <div class="list-group">
+    <a data-ng-repeat="coustmer in vm.coustmers"
+       data-ui-sref="coustmers.view({ coustmerId: coustmer._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span data-ng-bind="coustmer.created | date:'mediumDate'"></span>
+        by
+        <span data-ng-if="coustmer.user" data-ng-bind="coustmer.user.displayName"></span>
+        <span data-ng-if="!coustmer.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" data-ng-bind="coustmer.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" data-ng-if="vm.coustmers.$resolved && !vm.coustmers.length">
+    No Coustmers yet, why don't you <a data-ui-sref="coustmers.create">create one</a>?
+  </div>
+</section>
